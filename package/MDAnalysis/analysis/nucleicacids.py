@@ -106,19 +106,6 @@ class NucPairDist(AnalysisBase):
 
     Attributes
     ----------
-    results.pair_distances: numpy.ndarray
-        2D array of pair distances. First dimension is simulation time,
-        second dimension contains the pair distances for each each entry
-        pair in selection1 and selection2.
-
-        .. versionadded:: 2.4.0
-
-        .. note::
-            `results.pair_distances` is slated for deprecation in
-            version 3.0.0, use `results.distances` instead.
-        .. deprecated:: 2.7.0
-            `results.pair_distances` will be removed in
-            version 3.0.0, use :attr:`results.distances` instead.
 
     results.distances: numpy.ndarray
         stored in a 2d numpy array with first index selecting the
@@ -302,9 +289,7 @@ class NucPairDist(AnalysisBase):
 
         self.results.distances[self._frame_index, :] = dist
 
-    def _conclude(self) -> None:
-        self.results["pair_distances"] = self.results["distances"]
-        # TODO: remove pair_distances in 3.0.0
+
 
     def _get_aggregator(self):
         return ResultsGroup(
@@ -378,18 +363,6 @@ class WatsonCrickDist(NucPairDist):
         Residue pair.
 
         .. versionadded:: 2.7.0
-
-    results.pair_distances: numpy.ndarray
-        2D array of pair distances. First dimension is
-        simulation time, second dimension contains the
-        pair distances for each each entry pair in
-        selection1 and selection2.
-
-        .. versionadded:: 2.4.0
-
-        .. deprecated:: 2.7.0
-            `results.pair_distances` will be removed in version 3.0.0,
-            use :attr:`results.distances` instead.
 
     times: numpy.ndarray
         Simulation times for analysis.
