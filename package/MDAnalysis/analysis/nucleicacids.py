@@ -289,8 +289,6 @@ class NucPairDist(AnalysisBase):
 
         self.results.distances[self._frame_index, :] = dist
 
-
-
     def _get_aggregator(self):
         return ResultsGroup(
             lookup={
